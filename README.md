@@ -1,5 +1,7 @@
 # Agro-Web-Vision
 
+It's Team project and my team mate is [Jayakkavin E](https://github.com/Jayakkavin?tab=repositories)
+
 Features :
 	
 	-> Easy to use.
