@@ -1,0 +1,63 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+            <main>
+                <% if (prods.length > 0) { %>
+                    <div class="grid">
+                        <% for (let de of prods) { %>
+                            <article class="card product-item">
+                                <header class="card__header">
+                                    <h1 class="product__title">
+                                        <%= de.seed %>
+                                    </h1>
+                                </header>
+                                <div class="card__image">
+                                    <img src="<%= de.image %>" alt="<%= de.title %>">
+                                </div>
+                                <div class="card__content">
+                                    <h2 class="product__price">Rs.
+                                        <%= de.market %>
+                                    </h2>
+                                    <p class="product__description">
+                                        <%= de.desc %>
+                                    </p>
+                                    <p class="product__description">
+                                        <%= de.climate %>
+                                    </p>
+                                    <p class="product__description">
+                                        <%= de.land %>
+                                    </p>
+                                    <p class="product__description">
+                                        <%= de.fertilizer %>
+                                    </p>
+                                    <p class="product__description">
+                                        <%= de.natural %>
+                                    </p>
+                                    <p class="product__description">
+                                        <%= de.irrigation %>
+                                    </p>
+                                    <p class="product__description">
+                                        <%= de.harvesting %>
+                                    </p>
+                                </div>
+                                <div class="card__actions">
+                                    <a href="/home/edit-product/<%= de._id %>?edit=true" class="btn">Edit</a>
+                                    <form action="/home/delete-product" method="POST">
+                                        <input type="hidden" value="<%= de._id %>" name="deId">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button class="btn" type="submit">Delete</button>
+                                    </form>
+
+                                </div>
+                            </article>
+                            <% } %>
+                    </div>
+                    <% } else { %>
+                        <h1>No Products Found!</h1>
+                        <% } %>
+            </main>
+            <%- include('../includes/end.ejs') %>

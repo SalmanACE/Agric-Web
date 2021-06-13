@@ -1,0 +1,53 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <!-- <form action="/sort/select" method="post">
+            <div class="selectdiv">
+                <label for="climate">climate</label>
+                <select name="climate" id="climate">
+                    <option value="">Select</option>
+                  <option value="Rainny">Rainny</option>
+                  <option value="Hot">Hot</option>
+                </select>
+                </div>
+            <div class="box">
+            <label for="land">Land</label>
+            <select name="land" id="land">
+                <option value="">Select</option>
+              <option value="RedSoil">RedSoil</option>
+              <option value="BlackSoil">BlackSoil</option>
+            </select>
+        </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit">Select</button>
+            </form>  -->
+
+        <% if (prods.length > 0) { %>
+            <div class="grid">
+                <% for (let de of prods) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= de.climate %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= de.image %>">
+                        </div>
+                        <!-- <header class="card__header">
+                            <h1 class="product__title">Land :<%= de.land %></h1>
+                        </header> -->
+                        <div class="card__actions">
+                                <a href="/choose/<%= de.climate %>" class="btn">Choose</a>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,63 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="product-form" action="/home/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
+            <div class="form-control">
+                <label for="seed">Seed</label>
+                <input type="text" name="seed" id="seed" value="<% if (editing) { %><%= de.seed %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="image">Image</label>
+                <input type="text" name="image" id="image" value="<% if (editing) { %><%= de.image %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="market">Market</label>
+                <input type="number" name="market" id="market" step="0.01" value="<% if (editing) { %><%= de.market %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="desc">Description</label>
+                <textarea name="desc" id="desc" rows="5"><% if (editing) { %><%= de.desc %><% } %></textarea>
+            </div>
+            <div class="form-control">
+                <label for="climate">Climate</label>
+                <textarea name="climate" id="climate" rows="5"><% if (editing) { %><%= de.fertilizer %><% } %></textarea>
+            </div>
+            <div class="form-control">
+                <label for="land">Land</label>
+                <textarea name="land" id="land" rows="5"><% if (editing) { %><%= de.fertilizer %><% } %></textarea>
+            </div>
+            <div class="form-control">
+                <label for="Landimage">LandImage</label>
+                <input type="text" name="Landimage" id="Landimage" value="<% if (editing) { %><%= de.Landimage %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="fertilizer">Fertilizer</label>
+                <textarea name="fertilizer" id="fertilizer" rows="5"><% if (editing) { %><%= de.fertilizer %><% } %></textarea>
+            </div>
+            <div class="form-control">
+                <label for="natural">Natural</label>
+                <textarea name="natural" id="natural" rows="5"><% if (editing) { %><%= de.natural %><% } %></textarea>
+            </div>
+            <div class="form-control">
+                <label for="irrigation">Irrigation</label>
+                <textarea name="irrigation" id="irrigation" rows="5"><% if (editing) { %><%= de.irrigation %><% } %></textarea>
+            </div>
+            <div class="form-control">
+                <label for="harvesting">Harvesting</label>
+                <textarea name="harvesting" id="harvesting" rows="5"><% if (editing) { %><%= de.harvesting %><% } %></textarea>
+            </div>
+            <% if (editing) { %>
+                <input type="hidden" value="<%= de._id %>" name="deId">
+            <% } %>
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>
